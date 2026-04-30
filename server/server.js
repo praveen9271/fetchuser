@@ -1,17 +1,11 @@
-require("dotenv").config();
-const http = require("http");
+import "dotenv/config";
+import http from "http";
+import users from "./users.js";
 
 const PORT = process.env.PORT || 5000;
 
-const users = [
-  { id: 1, name: "Manish" },
-  { id: 2, name: "Manraj" },
-  { id: 3, name: "Praveen" },
-];
-
 const server = http.createServer((req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET");
 
   if (req.url === "/users" && req.method === "GET") {
     res.writeHead(200, { "Content-Type": "application/json" });
@@ -22,6 +16,6 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(PORT, function () {
-  console.log(`Server is running on port ${PORT}`);
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
