@@ -1,6 +1,8 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import http from "http";
 import users from "./users.js";
+
+dotenv.config({ path: new URL(".env", import.meta.url) });
 
 const PORT = process.env.PORT || 5000;
 
